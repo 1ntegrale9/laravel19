@@ -7,11 +7,6 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $posts = Post::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
