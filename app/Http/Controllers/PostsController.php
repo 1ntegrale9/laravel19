@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class PostsController extends Controller
@@ -15,11 +16,14 @@ class PostsController extends Controller
 
     public function create()
     {
+        if (!Auth::check()) return view('auth.login');
         return view('posts.create');
     }
 
     public function store(Request $request)
     {
+        if (!Auth::check()) return view('auth.login');
+
         $params = $request->validate([
             'title' => 'required|max:50',
             'body' => 'required|max:2000',
@@ -41,6 +45,8 @@ class PostsController extends Controller
 
     public function edit($post_id)
     {
+        if (!Auth::check()) return view('auth.login');
+
         $post = Post::findOrFail($post_id);
 
         return view('posts.edit', [
@@ -50,6 +56,8 @@ class PostsController extends Controller
 
     public function update($post_id, Request $request)
     {
+        if (!Auth::check()) return view('auth.login');
+
         $params = $request->validate([
             'title' => 'required|max:50',
             'body' => 'required|max:2000',
@@ -63,6 +71,8 @@ class PostsController extends Controller
 
     public function destroy($post_id)
     {
+        if (!Auth::check()) return view('auth.login');
+
         $post = Post::findOrFail($post_id);
 
         \DB::transaction(function () use ($post) {
