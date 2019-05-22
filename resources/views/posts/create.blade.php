@@ -4,7 +4,7 @@
   <div class="container mt-4">
     <div class="border p-4">
       <h1 class="h5 mb-4">
-        投稿の新規作成
+        村の新規作成
       </h1>
 
       <form method="POST" action="{{ route('posts.store') }}">
@@ -13,7 +13,7 @@
         <fieldset class="mb-4">
           <div class="form-group">
             <label for="title">
-              タイトル
+              村名
             </label>
             <input
               id="title"
@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="body">
-              本文
+              詳細
             </label>
 
             <textarea
@@ -53,7 +53,7 @@
             </a>
 
             <button type="submit" class="btn btn-primary">
-              投稿する
+              村を作成する
             </button>
           </div>
         </fieldset>

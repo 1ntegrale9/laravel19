@@ -4,7 +4,7 @@
 <div class="container mt-4">
   <div class="border p-4">
     <h1 class="h5 mb-4">
-      投稿の編集
+      村の編集
     </h1>
 
     <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}">
@@ -14,7 +14,7 @@
       <fieldset class="mb-4">
         <div class="form-group">
           <label for="title">
-            タイトル
+            村名
           </label>
           <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?: $post->title }}" type="text">
           @if ($errors->has('title'))
