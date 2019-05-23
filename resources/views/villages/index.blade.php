@@ -3,39 +3,39 @@
 @section('content')
 <div class="container mt-4">
   <div class="mb-4">
-    <a href="{{ route('posts.create') }}" class="btn btn-primary">
+    <a href="{{ route('villages.create') }}" class="btn btn-primary">
       村を新規作成する
     </a>
   </div>
-  @foreach ($posts as $post)
+  @foreach ($villages as $village)
   <div class="card mb-4">
     <div class="card-header">
-      {{ $post->title }}
+      {{ $village->title }}
     </div>
     <div class="card-body">
       <p class="card-text">
-        {!! nl2br(e(str_limit($post->body, 200))) !!}
+        {!! nl2br(e(str_limit($village->body, 200))) !!}
       </p>
 
-      <a class="card-link" href="{{ route('posts.show', ['post' => $post]) }}">
+      <a class="card-link" href="{{ route('villages.show', ['village' => $village]) }}">
         村に入る
       </a>
     </div>
     <div class="card-footer">
       <span class="mr-2">
-        作成日時 {{ $post->created_at->format('Y.m.d') }}
+        作成日時 {{ $village->created_at->format('Y.m.d') }}
       </span>
 
-      @if ($post->comments->count())
+      @if ($village->comments->count())
       <span class="badge badge-primary">
-        発言 {{ $post->comments->count() }}件
+        発言 {{ $village->comments->count() }}件
       </span>
       @endif
     </div>
   </div>
   @endforeach
   <div class="d-flex justify-content-center mb-5">
-    {{ $posts->links() }}
+    {{ $villages->links() }}
   </div>
 </div>
 @endsection

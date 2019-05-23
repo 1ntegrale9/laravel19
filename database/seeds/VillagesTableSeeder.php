@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Village;
 use App\Comment;
 
-class PostsTableSeeder extends Seeder
+class VillagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,11 +13,11 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Post::class, 50)
+        factory(Village::class, 50)
             ->create()
-            ->each(function ($post) {
+            ->each(function ($village) {
                 $comments = factory(App\Comment::class, 2)->make();
-                $post->comments()->saveMany($comments);
+                $village->comments()->saveMany($comments);
             });
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Village;
 
 class CommentsController extends Controller
 {
@@ -15,13 +15,13 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $params = $request->validate([
-            'post_id' => 'required|exists:posts,id',
+            'village_id' => 'required|exists:villages,id',
             'body' => 'required|max:2000',
         ]);
 
-        $post = Post::findOrFail($params['post_id']);
-        $post->comments()->create($params);
+        $village = Village::findOrFail($params['village_id']);
+        $village->comments()->create($params);
 
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('villages.show', ['village' => $village]);
     }
 }

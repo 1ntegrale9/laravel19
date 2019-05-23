@@ -7,7 +7,7 @@
       村の編集
     </h1>
 
-    <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}">
+    <form method="village" action="{{ route('villages.update', ['village' => $village]) }}">
       @csrf
       @method('PUT')
 
@@ -16,7 +16,7 @@
           <label for="title">
             村名
           </label>
-          <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?: $post->title }}" type="text">
+          <input id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ?: $village->title }}" type="text">
           @if ($errors->has('title'))
           <div class="invalid-feedback">
             {{ $errors->first('title') }}
@@ -29,7 +29,7 @@
             本文
           </label>
 
-          <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="4">{{ old('body') ?: $post->body }}</textarea>
+          <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="4">{{ old('body') ?: $village->body }}</textarea>
           @if ($errors->has('body'))
           <div class="invalid-feedback">
             {{ $errors->first('body') }}
@@ -38,7 +38,7 @@
         </div>
 
         <div class="mt-5">
-          <a class="btn btn-secondary" href="{{ route('posts.show', ['post' => $post]) }}">
+          <a class="btn btn-secondary" href="{{ route('villages.show', ['village' => $village]) }}">
             キャンセル
           </a>
 

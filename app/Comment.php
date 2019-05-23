@@ -10,8 +10,8 @@ class Comment extends Model
         'body',
     ];
 
-    public function post()
+    public function village()
     {
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo('App\Village');
     }
 }

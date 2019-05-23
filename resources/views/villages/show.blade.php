@@ -4,10 +4,10 @@
 <div class="container mt-4">
   <div class="border p-4">
     <div class="mb-4 text-right">
-      <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">
+      <a class="btn btn-primary" href="{{ route('villages.edit', ['village' => $village]) }}">
         編集する
       </a>
-      <form style="display: inline-block;" method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
+      <form style="display: inline-block;" method="POST" action="{{ route('villages.destroy', ['village' => $village]) }}">
         @csrf
         @method('DELETE')
 
@@ -15,16 +15,16 @@
       </form>
     </div>
     <h1 class="h5 mb-4">
-      {{ $post->title }}
+      {{ $village->title }}
     </h1>
 
     <p class="mb-5">
-      {!! nl2br(e($post->body)) !!}
+      {!! nl2br(e($village->body)) !!}
     </p>
     <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
       @csrf
 
-      <input name="post_id" type="hidden" value="{{ $post->id }}">
+      <input name="village_id" type="hidden" value="{{ $village->id }}">
 
       <div class="form-group">
         <label for="body">
@@ -50,7 +50,7 @@
         コメント
       </h2>
 
-      @forelse($post->comments as $comment)
+      @forelse($village->comments as $comment)
       <div class="border-top p-4">
         <time class="text-secondary">
           {{ $comment->created_at->format('Y.m.d H:i') }}

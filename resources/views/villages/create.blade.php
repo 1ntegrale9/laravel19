@@ -7,7 +7,7 @@
         村の新規作成
       </h1>
 
-      <form method="POST" action="{{ route('posts.store') }}">
+      <form method="POST" action="{{ route('villages.store') }}">
         @csrf
 
         <fieldset class="mb-4">
