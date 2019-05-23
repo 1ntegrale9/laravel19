@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Village;
 
-class CommentsController extends Controller
+class RemarksController extends Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class CommentsController extends Controller
         ]);
 
         $village = Village::findOrFail($params['village_id']);
-        $village->comments()->create($params);
+        $village->remarks()->create($params);
 
         return redirect()->route('villages.show', ['village' => $village]);
     }

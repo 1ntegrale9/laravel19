@@ -21,7 +21,7 @@
     <p class="mb-5">
       {!! nl2br(e($village->body)) !!}
     </p>
-    <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
+    <form class="mb-4" method="POST" action="{{ route('remarks.store') }}">
       @csrf
 
       <input name="village_id" type="hidden" value="{{ $village->id }}">
@@ -50,13 +50,13 @@
         コメント
       </h2>
 
-      @forelse($village->comments as $comment)
+      @forelse($village->remarks as $remarks)
       <div class="border-top p-4">
         <time class="text-secondary">
-          {{ $comment->created_at->format('Y.m.d H:i') }}
+          {{ $remarks->created_at->format('Y.m.d H:i') }}
         </time>
         <p class="mt-2">
-          {!! nl2br(e($comment->body)) !!}
+          {!! nl2br(e($remarks->body)) !!}
         </p>
       </div>
       @empty

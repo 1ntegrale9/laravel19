@@ -11,8 +11,8 @@ class Village extends Model
         'body',
     ];
 
-    public function comments()
+    public function remarks()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Remark');
     }
 }

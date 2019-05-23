@@ -26,9 +26,9 @@
         作成日時 {{ $village->created_at->format('Y.m.d') }}
       </span>
 
-      @if ($village->comments->count())
+      @if ($village->remarks->count())
       <span class="badge badge-primary">
-        発言 {{ $village->comments->count() }}件
+        発言 {{ $village->remarks->count() }}件
       </span>
       @endif
     </div>

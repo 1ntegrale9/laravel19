@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Village;
-use App\Comment;
+use App\Remark;
 
 class VillagesTableSeeder extends Seeder
 {
@@ -16,8 +16,8 @@ class VillagesTableSeeder extends Seeder
         factory(Village::class, 50)
             ->create()
             ->each(function ($village) {
-                $comments = factory(App\Comment::class, 2)->make();
-                $village->comments()->saveMany($comments);
+                $remarks = factory(App\Remark::class, 2)->make();
+                $village->remarks()->saveMany($remarks);
             });
     }
 }

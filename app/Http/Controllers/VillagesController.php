@@ -10,7 +10,7 @@ class VillagesController extends Controller
 {
     public function index()
     {
-        $villages = Village::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
+        $villages = Village::with(['remarks'])->orderBy('created_at', 'desc')->paginate(10);
         return view('villages.index', ['villages' => $villages]);
     }
 
@@ -67,7 +67,7 @@ class VillagesController extends Controller
         $village = Village::findOrFail($village_id);
 
         \DB::transaction(function () use ($village) {
-            $village->comments()->delete();
+            $village->remarks()->delete();
             $village->delete();
         });
 
