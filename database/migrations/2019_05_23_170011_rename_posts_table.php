@@ -15,7 +15,6 @@ class RenamePostsTable extends Migration
     {
         Schema::dropIfExists('comments');
         Schema::dropIfExists('posts');
-        Schema::dropIfExists('villages');
         Schema::create('villages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50);
@@ -40,7 +39,6 @@ class RenamePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
-        Schema::dropIfExists('posts');
         Schema::dropIfExists('villages');
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
