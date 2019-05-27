@@ -4,13 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Village extends Model
+class Inhabitant extends Model
 {
     protected $fillable = [
-        'title',
-        'body',
-        'date',
-        'winner',
+        'skill',
     ];
 
     public function user()
@@ -18,17 +15,17 @@ class Village extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function inhabitants()
+    public function inhabitant()
     {
-        return $this->hasMany('App\Inhabitant');
+        return $this->belongsTo('App\Inhabitant');
     }
 
-    public function remarks()
+   public function remarks()
     {
         return $this->hasMany('App\Remark');
     }
 
-    public function votes()
+     public function votes()
     {
         return $this->hasMany('App\Vote');
     }

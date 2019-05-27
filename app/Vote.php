@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Remark extends Model
+class Vote extends Model
 {
     protected $fillable = [
-        'body',
         'date',
     ];
 
@@ -17,6 +16,11 @@ class Remark extends Model
     }
 
     public function inhabitant()
+    {
+        return $this->belongsTo('App\Inhabitant');
+    }
+
+    public function target()
     {
         return $this->belongsTo('App\Inhabitant');
     }
