@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Village;
+use App\Inhabitant;
 use App\Remark;
 
 class VillagesTableSeeder extends Seeder
@@ -13,11 +14,16 @@ class VillagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Village::class, 50)
+        factory(Village::class, 3)
             ->create()
             ->each(function ($village) {
-                $remarks = factory(App\Remark::class, 2)->make();
-                $village->remarks()->saveMany($remarks);
-            });
+                $inhabitants = factory(Inhabitant::class, 10)->make();
+                foreach ($inhabitants as $inhabitant) {
+                    $village->inhabitants()->save($inhabitant);
+                    $remarks = factory(Remark::class, 2)->make();
+                    $inhabitant->remarks()->saveMany($remarks);
+                }
+            }
+        );
     }
 }

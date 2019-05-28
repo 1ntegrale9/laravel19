@@ -15,11 +15,6 @@ class Inhabitant extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function inhabitant()
-    {
-        return $this->belongsTo('App\Inhabitant');
-    }
-
    public function remarks()
     {
         return $this->hasMany('App\Remark');
