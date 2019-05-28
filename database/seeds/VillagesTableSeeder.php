@@ -14,16 +14,10 @@ class VillagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Village::class, 3)
-            ->create()
-            ->each(function ($village) {
-                $inhabitants = factory(Inhabitant::class, 10)->make();
-                foreach ($inhabitants as $inhabitant) {
-                    $village->inhabitants()->save($inhabitant);
-                    $remarks = factory(Remark::class, 2)->make();
-                    $inhabitant->remarks()->saveMany($remarks);
-                }
-            }
-        );
+        factory(Village::class, 3)->create()->each(function ($village) {
+            factory(Inhabitant::class, 10)->create(['village_id' => $village->id])->each(function ($inhabitant) {
+                factory(Remark::class, 2)->create(['inhabitant_id' => $inhabitant->id, 'village_id' => $inhabitant->village_id]);
+            });
+        });
     }
 }
