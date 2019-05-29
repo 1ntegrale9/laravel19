@@ -25,6 +25,8 @@ class VillagesController extends Controller
             'title' => 'required|max:50',
             'body' => 'required|max:2000',
         ]);
+        $params['date'] = 0;
+        $params['user_id'] = Auth::id();
 
         Village::create($params);
 
@@ -34,9 +36,16 @@ class VillagesController extends Controller
     public function show($village_id)
     {
         $village = Village::findOrFail($village_id);
+        $is_author = $village['user_id'] == Auth::id();
+        $is_standby = $village['date'] == 0;
+        $is_editable = $is_author && $is_standby;
+
+        $remarks = $village->remarks()->orderBy('created_at', 'desc')->paginate(10);
 
         return view('villages.show', [
             'village' => $village,
+            'remarks' => $remarks,
+            'is_editable' => $is_editable,
         ]);
     }
 

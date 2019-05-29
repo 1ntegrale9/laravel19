@@ -9,6 +9,7 @@ class Remark extends Model
     protected $fillable = [
         'body',
         'date',
+        'inhabitant_id',
     ];
 
     public function village()

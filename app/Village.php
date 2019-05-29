@@ -10,6 +10,7 @@ class Village extends Model
         'title',
         'body',
         'date',
+        'user_id',
         'winner',
     ];
 

@@ -4,31 +4,33 @@
 <div class="container mt-4">
   <div class="mb-4">
     <a href="{{ route('villages.create') }}" class="btn btn-primary">
-      村を新規作成する
+      新しい村を作る
     </a>
   </div>
   @foreach ($villages as $village)
   <div class="card mb-4">
     <div class="card-header">
-      {{ $village->title }}
+      <a class="card-link" href="{{ route('villages.show', ['village' => $village]) }}">
+        {{ $village->title }}
+      </a>
     </div>
     <div class="card-body">
       <p class="card-text">
         {!! nl2br(e(str_limit($village->body, 200))) !!}
       </p>
 
-      <a class="card-link" href="{{ route('villages.show', ['village' => $village]) }}">
-        村に入る
-      </a>
     </div>
     <div class="card-footer">
-      <span class="mr-2">
-        作成日時 {{ $village->created_at->format('Y.m.d') }}
+      <span class="badge badge-primary">
+        Author = {{ $village->user->name }}
+      </span>
+      <span class="badge badge-primary">
+        Created = {{ $village->created_at->format('Y.m.d') }}
       </span>
 
-      @if ($village->remarks->count())
+      @if ($village->inhabitants->count())
       <span class="badge badge-primary">
-        発言 {{ $village->remarks->count() }}件
+        Inhabitants = {{ $village->inhabitants->count() }}
       </span>
       @endif
     </div>

@@ -4,7 +4,7 @@
   <div class="container mt-4">
     <div class="border p-4">
       <h1 class="h5 mb-4">
-        村の新規作成
+        新しい村を作る
       </h1>
 
       <form method="POST" action="{{ route('villages.store') }}">
@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="body">
-              詳細
+              説明文
             </label>
 
             <textarea

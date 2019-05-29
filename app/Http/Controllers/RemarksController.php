@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Village;
+use App\Remark;
 
 class RemarksController extends Controller
 {
@@ -20,8 +22,10 @@ class RemarksController extends Controller
         ]);
 
         $village = Village::findOrFail($params['village_id']);
+        $params['date'] = $village['date'];
+        $params['inhabitant_id'] = Auth::id();
         $village->remarks()->create($params);
-
+        
         return redirect()->route('villages.show', ['village' => $village]);
     }
 }

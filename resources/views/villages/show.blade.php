@@ -3,6 +3,7 @@
 @section('content')
 <div class="container mt-4">
   <div class="border p-4">
+    @if ($is_editable)
     <div class="mb-4 text-right">
       <a class="btn btn-primary" href="{{ route('villages.edit', ['village' => $village]) }}">
         編集する
@@ -14,6 +15,7 @@
         <button class="btn btn-danger">削除する</button>
       </form>
     </div>
+    @endif
     <h1 class="h5 mb-4">
       {{ $village->title }}
     </h1>
@@ -27,10 +29,6 @@
       <input name="village_id" type="hidden" value="{{ $village->id }}">
 
       <div class="form-group">
-        <label for="body">
-          本文
-        </label>
-
         <textarea id="body" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" rows="4">{{ old('body') }}</textarea>
         @if ($errors->has('body'))
         <div class="invalid-feedback">
@@ -41,27 +39,30 @@
 
       <div class="mt-4">
         <button type="submit" class="btn btn-primary">
-          コメントする
+          発言
         </button>
       </div>
     </form>
     <section>
-      <h2 class="h5 mb-4">
-        コメント
-      </h2>
 
-      @forelse($village->remarks as $remarks)
-      <div class="border-top p-4">
+      @forelse($remarks as $remark)
+      <div class="border-top p-3">
+        <span class="text-primary">
+          {{ $remark->inhabitant->user->name }}
+        </span>
         <time class="text-secondary">
-          {{ $remarks->created_at->format('Y.m.d H:i') }}
+          {{ $remark->created_at->format('Y.m.d H:i') }}
         </time>
         <p class="mt-2">
-          {!! nl2br(e($remarks->body)) !!}
+          {!! nl2br(e($remark->body)) !!}
         </p>
       </div>
       @empty
       <p>コメントはまだありません。</p>
       @endforelse
+      <div class="d-flex justify-content-center mb-5">
+        {{ $remarks->links() }}
+      </div>
     </section>
   </div>
 </div>
