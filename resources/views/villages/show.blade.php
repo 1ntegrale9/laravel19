@@ -47,12 +47,12 @@
 
       @forelse($remarks as $remark)
       <div class="border-top p-3">
-        <span class="text-primary">
-          {{ $remark->inhabitant->user->name }}
-        </span>
         <time class="text-secondary">
           {{ $remark->created_at->format('Y.m.d H:i') }}
         </time>
+        <span class="text-secondary">
+          {{ $remark->inhabitant->user->name }}
+        </span>
         <p class="mt-2">
           {!! nl2br(e($remark->body)) !!}
         </p>
