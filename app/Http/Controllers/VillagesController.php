@@ -40,7 +40,7 @@ class VillagesController extends Controller
         $is_standby = $village['date'] == 0;
         $is_editable = $is_author && $is_standby;
 
-        $remarks = $village->remarks()->orderBy('created_at', 'desc')->paginate(10);
+        $remarks = $village->remarks()->orderBy('created_at', 'desc')->paginate(100);
 
         return view('villages.show', [
             'village' => $village,
