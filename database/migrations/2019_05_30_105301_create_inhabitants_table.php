@@ -16,7 +16,7 @@ class CreateInhabitantsTable extends Migration
         Schema::create('inhabitants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('skill');
+            $table->unsignedInteger('skill_id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('village_id');
