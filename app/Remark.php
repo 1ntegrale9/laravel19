@@ -33,6 +33,7 @@ class Remark extends Model
     protected $fillable = [
         'body',
         'date',
+        'village_id',
         'inhabitant_id',
     ];
 

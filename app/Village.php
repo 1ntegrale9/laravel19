@@ -40,8 +40,8 @@ class Village extends Model
         'title',
         'body',
         'date',
-        'user_id',
         'winner',
+        'user_id',
     ];
 
     public function user()

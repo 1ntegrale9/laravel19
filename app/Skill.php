@@ -33,6 +33,9 @@ class Skill extends Model
 {
     protected $fillable = [
         'date',
+        'village_id',
+        'inhabitant_id',
+        'target_id',
     ];
 
     public function village()

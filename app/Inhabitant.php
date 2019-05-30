@@ -33,6 +33,8 @@ class Inhabitant extends Model
 {
     protected $fillable = [
         'skill',
+        'user_id',
+        'village_id',
     ];
 
     public function user()
