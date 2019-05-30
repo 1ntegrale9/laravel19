@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\MasterSkills;
+use App\MasterSkill;
 
 class MasterSkillsTableSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class MasterSkillsTableSeeder extends Seeder
     public function run()
     {
         foreach (config('const.SKILLS') as $e) {
-            MasterSkills::firstOrCreate([
+            MasterSkill::firstOrCreate([
                 'id' => $e[0]
             ], [
                 'cliques' => $e[1],

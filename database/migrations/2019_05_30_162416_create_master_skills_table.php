@@ -25,19 +25,6 @@ class CreateMasterSkillsTable extends Migration
             $table->string('symbol', 1)->unique();
             $table->string('name', 20)->unique();
         });
-
-        foreach (config('const.SKILLS') as $e) {
-            DB::table('master_skills')->insert([
-                'cliques' => $e[1],
-                'species' => $e[2],
-                'can_raid' => $e[3],
-                'can_divine' => $e[4],
-                'can_dissect' => $e[5],
-                'can_escort' => $e[6],
-                'symbol' => $e[7],
-                'name' => $e[8],
-            ]);
-        };
     }
 
     /**

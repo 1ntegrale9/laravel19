@@ -33,8 +33,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereSymbol($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Inhabitant $inhabitant
  */
-class MasterSkills extends Model
+class MasterSkill extends Model
 {
     protected $fillable = [
         'cliques',
@@ -46,4 +47,9 @@ class MasterSkills extends Model
         'symbol',
         'name',
     ];
+
+    public function inhabitant()
+    {
+        return $this->belongsTo('App\Inhabitant');
+    }
 }

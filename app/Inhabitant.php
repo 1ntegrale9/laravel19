@@ -10,20 +10,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int $skill
+ * @property int $skill_id
  * @property int $user_id
  * @property int $village_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Raid[] $raids
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Remark[] $remarks
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Skill[] $skills
  * @property-read \App\User $user
+ * @property-read \App\MasterSkill $skill
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Remark[] $remarks
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Raid[] $raids
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Skill[] $skills
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Vote[] $votes
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereSkill($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereSkillId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereVillageId($value)
@@ -32,7 +33,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inhabitant extends Model
 {
     protected $fillable = [
-        'skill',
+        'skill_id',
         'user_id',
         'village_id',
     ];
@@ -40,6 +41,11 @@ class Inhabitant extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function skill()
+    {
+        return $this->hasOne('App\MasterSkill', 'master_skills');
     }
 
    public function remarks()
