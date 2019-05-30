@@ -43,11 +43,6 @@ class Inhabitant extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function skill()
-    {
-        return $this->hasOne('App\MasterSkill', 'master_skills');
-    }
-
    public function remarks()
     {
         return $this->hasMany('App\Remark');

@@ -15,6 +15,6 @@ $factory->define(Inhabitant::class, function (Faker $faker) {
         'village_id' => function () {
             return factory(Village::class)->create()->id;
         },
-        'skill' => 1,
+        'skill_id' => 1,
     ];
 });

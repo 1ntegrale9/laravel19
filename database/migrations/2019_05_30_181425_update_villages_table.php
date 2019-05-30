@@ -14,9 +14,7 @@ class UpdateVillagesTable extends Migration
     public function up()
     {
         Schema::table('inhabitants', function (Blueprint $table) {
-            $table->dropColumn('skill');
-            $table->unsignedInteger('skill_id');
-            $table->foreign('skill_id')->references('id')->on('master_skills');
+            $table->renameColumn('skill', 'skill_id');
         });
     }
 
@@ -28,8 +26,7 @@ class UpdateVillagesTable extends Migration
     public function down()
     {
         Schema::table('inhabitants', function (Blueprint $table) {
-            $table->dropColumn('skill_id');
-            $table->unsignedInteger('skill');
+            $table->renameColumn('skill_id', 'skill');
         });
     }
 }

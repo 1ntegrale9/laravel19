@@ -47,9 +47,4 @@ class MasterSkill extends Model
         'symbol',
         'name',
     ];
-
-    public function inhabitant()
-    {
-        return $this->belongsTo('App\Inhabitant');
-    }
 }
