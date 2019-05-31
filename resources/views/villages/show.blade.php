@@ -60,7 +60,7 @@
       </p>
       <p>
         <span class="text-danger">
-          【犠牲者】
+          【死亡者】
           @forelse($deads as $dead)
           {{ $dead->user->name }}
           @empty
