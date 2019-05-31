@@ -25,7 +25,7 @@ class RemarksController extends Controller
         $params['date'] = $village['date'];
         $params['inhabitant_id'] = Auth::id();
         $village->remarks()->create($params);
-        
+
         return redirect()->route('villages.show', ['village' => $village]);
     }
 }

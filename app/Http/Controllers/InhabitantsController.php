@@ -35,4 +35,3 @@ class InhabitantsController extends Controller
         return redirect()->route('villages.show', ['village' => $village]);
     }
 }
-    
