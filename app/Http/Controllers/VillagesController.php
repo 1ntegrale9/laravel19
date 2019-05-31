@@ -25,7 +25,6 @@ class VillagesController extends Controller
             'title' => 'required|max:50',
             'body' => 'required|max:2000',
         ]);
-        $params['date'] = 0;
         $params['user_id'] = Auth::id();
 
         Village::create($params);

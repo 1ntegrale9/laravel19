@@ -18,10 +18,8 @@ class InhabitantsController extends Controller
     {
         $inhabitant = new Inhabitant;
         $inhabitant->fill([
-            'skill_id' => 1,
             'user_id' => Auth::id(),
             'village_id' => $village_id,
-            'is_dead' => False,
         ])->save();
 
         $village = Village::findOrFail($village_id);
