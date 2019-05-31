@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRaidsTable extends Migration
+class CreateInhabitantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateRaidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('raids', function (Blueprint $table) {
+        Schema::create('inhabitants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('date');
+            $table->boolean('is_dead')->default(False);
+            $table->unsignedInteger('skill_id')->default(1);
+            $table->foreign('skill_id')->references('id')->on('master_skills');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('village_id');
             $table->foreign('village_id')->references('id')->on('villages');
-            $table->unsignedInteger('inhabitant_id');
-            $table->foreign('inhabitant_id')->references('id')->on('inhabitants');
-            $table->unsignedInteger('target_id');
-            $table->foreign('target_id')->references('id')->on('inhabitants');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateRaidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raids');
+        Schema::dropIfExists('inhabitants');
     }
 }

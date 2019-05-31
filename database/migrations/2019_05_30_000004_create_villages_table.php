@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRemarksTable extends Migration
+class CreateVillagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateRemarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('remarks', function (Blueprint $table) {
+        Schema::create('villages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('title', 50);
             $table->text('body');
-            $table->unsignedInteger('date');
-            $table->unsignedInteger('village_id');
-            $table->foreign('village_id')->references('id')->on('villages');
-            $table->unsignedInteger('inhabitant_id');
-            $table->foreign('inhabitant_id')->references('id')->on('inhabitants');
+            $table->unsignedInteger('date')->default(0);
+            $table->unsignedInteger('winner')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateRemarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('remarks');
+        Schema::dropIfExists('villages');
     }
 }

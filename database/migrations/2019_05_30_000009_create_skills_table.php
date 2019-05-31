@@ -16,7 +16,7 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('date');
+            $table->unsignedInteger('date')->default(0);
             $table->unsignedInteger('village_id');
             $table->foreign('village_id')->references('id')->on('villages');
             $table->unsignedInteger('inhabitant_id');

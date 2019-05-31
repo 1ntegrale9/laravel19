@@ -5,35 +5,34 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\MasterSkills
+ * App\MasterSkill
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $cliques
  * @property int $species
- * @property int $can_raid
- * @property int $can_divine
- * @property int $can_dissect
- * @property int $can_escort
+ * @property bool $can_raid
+ * @property bool $can_divine
+ * @property bool $can_dissect
+ * @property bool $can_escort
  * @property string $symbol
  * @property string $name
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCanDissect($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCanDivine($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCanEscort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCanRaid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCliques($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereSpecies($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereSymbol($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkills whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCanDissect($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCanDivine($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCanEscort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCanRaid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCliques($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereSpecies($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereSymbol($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MasterSkill whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \App\Inhabitant $inhabitant
  */
 class MasterSkill extends Model
 {

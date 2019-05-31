@@ -16,12 +16,12 @@ class CreateMasterSkillsTable extends Migration
         Schema::create('master_skills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedInteger('cliques');
-            $table->unsignedInteger('species');
-            $table->unsignedInteger('can_raid');
-            $table->unsignedInteger('can_divine');
-            $table->unsignedInteger('can_dissect');
-            $table->unsignedInteger('can_escort');
+            $table->unsignedInteger('cliques')->default(1);
+            $table->unsignedInteger('species')->default(1);
+            $table->boolean('can_raid')->default(False);
+            $table->boolean('can_divine')->default(False);
+            $table->boolean('can_dissect')->default(False);
+            $table->boolean('can_escort')->default(False);
             $table->string('symbol', 1)->unique();
             $table->string('name', 20)->unique();
         });
