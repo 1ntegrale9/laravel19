@@ -14,7 +14,7 @@ class UpdateInhabitantsTable extends Migration
     public function up()
     {
         Schema::table('inhabitants', function (Blueprint $table) {
-            $table->boolean('is_dead');
+            $table->boolean('is_dead')->default(False);
         });
     }
 

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $skill_id
  * @property int $user_id
  * @property int $village_id
+ * @property bool $is_dead
  * @property-read \App\User $user
  * @property-read \App\MasterSkill $skill
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Remark[] $remarks
@@ -28,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereVillageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant whereIsDead($value)
  * @mixin \Eloquent
  */
 class Inhabitant extends Model
