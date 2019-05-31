@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Village;
+use App\Inhabitant;
 
 class VillagesController extends Controller
 {
@@ -34,17 +35,22 @@ class VillagesController extends Controller
 
     public function show($village_id)
     {
-        $village = Village::findOrFail($village_id);
-        $is_author = $village['user_id'] == Auth::id();
-        $is_standby = $village['date'] == 0;
-        $is_editable = $is_author && $is_standby;
-
+        $village = Village::with(['remarks', 'inhabitants'])->findOrFail($village_id);
         $remarks = $village->remarks()->orderBy('created_at', 'desc')->paginate(100);
+        $inhabitant =$village->inhabitants()->where('user_id', Auth::id());
+        $inhabitants = Inhabitant::all()->where('village_id', $village_id);
+        $survivors = $inhabitants->where('is_dead', False);
+        $deads = $inhabitants->where('is_dead', True);
 
         return view('villages.show', [
             'village' => $village,
             'remarks' => $remarks,
-            'is_editable' => $is_editable,
+            'survivors' => $survivors,
+            'deads' => $deads,
+            'inhabitant' => $inhabitant->first(),
+            'is_standby' => ($village['date'] == 0),
+            'is_author' => ($village['user_id'] == Auth::id()),
+            'is_joined' => $inhabitant->exists(),
         ]);
     }
 
@@ -76,6 +82,7 @@ class VillagesController extends Controller
 
         \DB::transaction(function () use ($village) {
             $village->remarks()->delete();
+            $village->inhabitants()->delete();
             $village->delete();
         });
 

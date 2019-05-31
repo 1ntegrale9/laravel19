@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\MasterSkill $skill
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Skill[] $skills
  * @property-read \App\User $user
+ * @property-read \App\Village $village
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Vote[] $votes
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inhabitant newQuery()
@@ -49,6 +50,11 @@ class Inhabitant extends Model
     public function skill()
     {
         return $this->belongsTo('App\MasterSkill', 'master_skills_id');
+    }
+
+    public function village()
+    {
+        return $this->belongsTo('App\Village');
     }
 
     public function remarks()

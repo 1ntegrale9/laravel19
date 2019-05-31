@@ -14,21 +14,23 @@ class InhabitantsController extends Controller
         $this->middleware('auth');
     }
 
-    public function store($village_id)
+    public function store(Request $request)
     {
+        $village_id = $request->village_id;
         $inhabitant = new Inhabitant;
         $inhabitant->fill([
             'user_id' => Auth::id(),
             'village_id' => $village_id,
         ])->save();
 
-        $village = Village::findOrFail($village_id);
+        $village = Village::findOrFail($request->village_id);
         return redirect()->route('villages.show', ['village' => $village]);
     }
 
-    public function destroy($village_id)
+    public function destroy(Request $request)
     {
-        Inhabitant::where('village_id', $village_id)->where('inhabitant_id', Auth::id())->delete();
+        $village_id = $request->village_id;
+        Inhabitant::where('village_id', $village_id)->where('user_id', Auth::id())->delete();
         $village = Village::findOrFail($village_id);
         return redirect()->route('villages.show', ['village' => $village]);
     }
