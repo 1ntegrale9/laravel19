@@ -43,7 +43,12 @@ class Inhabitant extends Model
         return $this->belongsTo('App\User');
     }
 
-   public function remarks()
+    public function skill()
+    {
+        return $this->belongsTo('App\MasterSkill', 'master_skills_id');
+    }
+
+    public function remarks()
     {
         return $this->hasMany('App\Remark');
     }
