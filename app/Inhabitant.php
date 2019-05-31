@@ -36,6 +36,7 @@ class Inhabitant extends Model
         'skill_id',
         'user_id',
         'village_id',
+        'is_dead',
     ];
 
     public function user()
