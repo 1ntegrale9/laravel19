@@ -17,7 +17,7 @@ class CreateRemarksTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('body');
-            $table->unsignedInteger('date')->nullable();
+            $table->unsignedInteger('date')->default(0);
             $table->unsignedInteger('village_id');
             $table->foreign('village_id')->references('id')->on('villages');
             $table->unsignedInteger('inhabitant_id');

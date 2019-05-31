@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $body
- * @property int|null $date
+ * @property int $date
  * @property int $village_id
  * @property int $inhabitant_id
  * @property-read \App\Inhabitant $inhabitant
